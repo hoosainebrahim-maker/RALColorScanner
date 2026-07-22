@@ -23,11 +23,18 @@ jobs:
         with:
           gradle-version: "8.6"
 
-      - name: Build debug APK
-        run: gradle assembleDebug --stacktrace
+      - name: Locate project root and build debug APK
+        run: |
+          PROJECT_DIR=$(dirname "$(find . -name settings.gradle.kts -not -path '*/build/*' | head -n 1)")
+          if [ -z "$PROJECT_DIR" ] || [ "$PROJECT_DIR" = "." ]; then
+            PROJECT_DIR="."
+          fi
+          echo "Found Gradle project at: $PROJECT_DIR"
+          cd "$PROJECT_DIR"
+          gradle assembleDebug --stacktrace
 
       - name: Upload APK as a downloadable artifact
         uses: actions/upload-artifact@v4
         with:
           name: RAL-Color-Scanner-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: "**/app-debug.apk"
