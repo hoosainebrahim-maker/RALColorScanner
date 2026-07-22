@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RAL Color Scanner</string>
+    <string name="tap_to_lock">Tap to lock</string>
+    <string name="resume_scanning">Resume scanning</string>
+    <string name="camera_permission_required">Camera permission is required to scan colors.</string>
+    <string name="camera_start_failed">Could not start camera.</string>
+    <string name="ral_code_format">%1$s</string>
+    <string name="detecting">Detecting color…</string>
+    <string name="point_camera_hint">Point the camera at an object</string>
+</resources>
